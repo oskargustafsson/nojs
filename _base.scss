@@ -1,6 +1,3 @@
-$selected-color: red;
-$active-color: gray;
-
 .show-state {
   box-shadow: 0 0 0 1px red inset; // Only for demonstration of functionality
 }
@@ -8,7 +5,7 @@ $active-color: gray;
 
 /* CLASS TEMPLATES */
 .hidden {
-  display: none; // Should probably be replaced
+  display: none;  // May be replaced, for better backward compatibility
 }
 
 
