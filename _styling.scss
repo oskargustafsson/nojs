@@ -1,0 +1,395 @@
+$green-accent-top: rgb(67, 173, 33);
+$green-accent-bottom: rgb(41, 85, 36);
+
+$light-background-dark: rgb(194, 194, 194);
+$light-background-light: rgb(243, 243, 243);
+
+$gray-background-light: rgb(162, 162, 162);
+$gray-background-dark: rgb(138, 138, 138);
+
+$black-background-light: #333333;
+$black-background-dark: #222222;
+
+$border-radius: 2px;
+
+body {
+  background: $black-background-light;
+  color: white;
+}
+
+textarea, body {
+  font-family: Arial;
+}
+
+
+/* CLASS TEMPLATES */
+.show-state {
+  box-shadow: none;   // Reset demo style
+}
+
+.defaults {
+  border: 0 none;
+  font-size: 14px;
+  border-radius: $border-radius;
+  padding: 5px 10px;
+}
+
+.basic-button {
+  @extend .defaults;
+  @extend .green-background;
+  position: relative;
+  margin: 0px 10px 1px 0;
+  display: inline-block;
+  vertical-align: top;
+  font-weight: bold;
+  line-height: 16px;
+  transition: -webkit-filter 0.2s;
+}
+
+.pushed-in-button {
+  padding-top: 6px;
+  padding-bottom: 4px;
+  background-image: linear-gradient(to bottom, darken($green-accent-bottom, 8), darken($green-accent-top, 10));
+  box-shadow: 0px -1px 1px rgba(black, 0.5),
+              0px 1px 0px rgba(white, 0.1),
+              0px 0px 8px rgba(black, 0.4) inset;
+}
+
+.inset-row {
+  color: black;
+  background-image: linear-gradient(to bottom, $gray-background-dark, $gray-background-light);
+  box-shadow: 6px 0px 8px -6px rgba(black, 0.5) inset,
+              -6px 0px 8px -6px rgba(black, 0.5) inset,
+              0 1px 0 rgba(white, 0.25) inset,
+              0 -1px 0 rgba(black, 0.25) inset;
+}
+
+.popout-row {
+  color: black;
+  background-image: linear-gradient(to bottom, $gray-background-dark, $gray-background-light);
+  box-shadow: 0 1px 0 rgba(white, 0.25) inset,
+              0 -1px 0 rgba(black, 0.25) inset;
+}
+
+.green-background {
+  background-image: linear-gradient(to bottom, $green-accent-top, $green-accent-bottom);
+  box-shadow: 0 1px 0 rgba(white, 0.25) inset,
+              0 -1px 0 rgba(black, 0.5) inset;
+  text-shadow: 0 1px 0 rgba(white, 0.2);
+}
+
+.white-inset-background {
+  box-shadow: 0 -1px 0 rgba(black, 0.5),
+              0 1px 8px rgba(black, 0.5) inset,
+              0 0px 1px black inset;
+  background-image: linear-gradient(to bottom, $light-background-dark, $light-background-light);
+}
+
+.white-outset-background {
+  box-shadow: 0 -1px 0 rgba(black, 0.5) inset,
+              0 -1px 8px rgba(black, 0.5) inset,
+              0 1px 1px black;
+  background-image: linear-gradient(to bottom, $light-background-light, $light-background-dark);
+}
+
+.pushed-in {
+  -webkit-filter: brightness(0.8);
+  transition: -webkit-filter 0.05s;
+}
+
+/* TEXTFIELD */
+.textfield {
+  @extend .defaults;
+  @extend .white-inset-background;
+}
+
+
+/* TEXTAREA */
+.textarea {
+  @extend .defaults;
+  @extend .white-inset-background;
+}
+
+
+/* BUTTON */
+.button {
+  @extend .basic-button;
+  outline: none;
+
+  &.popout:active {
+    margin-top: 1px;
+    margin-bottom: 0px;
+    background-image: linear-gradient(to bottom, darken($green-accent-top, 5), darken($green-accent-bottom, 8));
+  }
+
+  &.sunken:active {
+    @extend .pushed-in-button;
+  }
+}
+
+
+/* BUTTON SET */
+.buttonset {
+  margin-bottom: 20px;
+  padding-top: 1px;
+
+  input + label,
+  button {
+    @extend .basic-button;
+    border-right: 1px solid rgba(black, 0.25);
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 0px;
+    font-weight: inherit;
+    color: black;
+    float: left;
+  }
+
+  input + label:first-of-type,
+  button:first-child {
+    border-radius: $border-radius 0px 0px $border-radius;
+  }
+
+  input + label:last-of-type,
+  button:last-child {
+    border-radius: 0px $border-radius $border-radius 0px;
+  }
+
+  input:checked + label,
+  input + label:active,
+  button:active {
+    @extend .pushed-in-button;
+  }
+}
+
+
+/* CHECKBOX, RADIO BUTTON */
+.radio-button,
+.checkbox {
+  + label {
+    @extend .white-inset-background;
+    margin-bottom: 10px;
+
+    &:active {
+      background: linear-gradient(to bottom, darken($light-background-dark, 20), darken($light-background-light, 10));
+    }
+  }
+
+  &:checked + label::before {
+    border-top: 1px solid rgba(white, 0.33);
+    background-image: linear-gradient(to bottom, $black-background-light, $black-background-dark);
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 3px rgba(black, 0.75);
+  }
+}
+
+
+/* RADIO BUTTON */
+.radio-button + label {
+  border-radius: 20px;
+
+  &::before {
+    border-radius: 12px;
+  }
+}
+
+
+/* ON/OFF CHECKBOX */
+.on-off-checkbox {
+  border-radius: $border-radius;
+
+  input + .handle {
+    @extend .popout-row;
+    border-radius: $border-radius;
+    transition: margin-left 0.4s ease;
+
+    &::before, &::after {
+      @extend .white-inset-background;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    &::before {
+      background-image: linear-gradient(to bottom, $green-accent-bottom, $green-accent-top);
+    }
+  }
+}
+
+
+/* SELECT LIST */
+.select {
+  margin-right: 20px;
+  border-radius: $border-radius;
+  box-shadow: 0px -1px 1px rgba(black, 0.5),
+              0px 1px 0px rgba(white, 0.1);
+
+  input {
+    + label {
+      @extend .defaults;
+      @extend .inset-row;
+      border-radius: 0;
+      line-height: 16px;
+
+      &:active {
+        @extend .pushed-in;
+      }
+    }
+
+    &:checked + label {
+      font-weight: bold;
+      @extend .green-background;
+    }
+  }
+}
+
+
+/* DROPDOWN */
+.dropdown {
+  @extend .popout-row;
+  border-radius: $border-radius;
+
+  &::before {
+    @extend .green-background;
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    height: $dropdown-height;
+    line-height: $dropdown-height;
+    vertical-align: middle;
+    border-radius: 0 $border-radius $border-radius 0;
+    text-shadow: 0 1px 0 rgba(white, 0.2);
+    border-left: 1px solid rgba(white, 0.1);
+    padding: 0 8px;
+    font-size: 16px;
+    content:'\25be';  // Down arrow
+  }
+
+  &:active::before {
+    @extend .pushed-in;
+    line-height: $dropdown-height;
+  }
+
+  .select {
+    border-radius: 0 0 $border-radius $border-radius;
+    box-shadow: 0 1px 5px rgba(black, 0.4);
+
+    input {
+      &:checked + div > label {
+        border-radius: $border-radius;
+      }
+
+      + div > label {
+        @extend .defaults;
+        @extend .popout-row;
+        border-radius: 0;
+        line-height: 16px;
+
+        &:active {
+          @extend .pushed-in;
+        }
+      }
+    }
+  }
+}
+
+
+/* ACCORDION */
+.accordion {
+  input + label,
+  header {
+    @extend .defaults;
+    @extend .popout-row;
+    display: block;
+  }
+
+  input:checked + label,
+  header:focus {
+    @extend .green-background;
+    outline: 0 none;
+    border-radius: $border-radius $border-radius 0px 0px;
+    font-weight: bold;
+
+    + article {
+      max-height: 500px;
+      transition: max-height 0.4s ease;
+    }
+  }
+
+  article {
+    @extend .white-inset-background;
+    transition: max-height 0.4s ease;
+    border-radius: 0px 0px $border-radius $border-radius;
+
+    span {
+      @extend .defaults;
+      display: inline-block;
+      color: black;
+    }
+  }
+}
+
+
+/* TOOLTIP */
+.tooltip-container {
+  &::after {
+    transition: visibility 0s linear 0.5s,
+                opacity 0.5s linear;
+    border-radius: $border-radius;
+    padding: 1px 5px;
+    color: black;
+    background-image: linear-gradient(to bottom, $light-background-light, $light-background-dark);
+    box-shadow: 0 1px 1px rgba(black, 0.5);
+  }
+
+  &:hover::after {
+    transition-delay: 0s;
+  }
+}
+
+
+/* TABS */
+.tabs {
+  padding: 5px; // Accomodate drop shadow
+
+  input:checked + .tab {
+    @extend .green-background;
+    box-shadow: 0 1px 0 rgba(white, 0.25) inset;
+  }
+
+  .tab {
+    @extend .defaults;
+    @extend .popout-row;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 5px;
+    border-radius: $border-radius $border-radius 0 0;
+    line-height: $tab-height;
+    vertical-align: middle;
+  }
+
+  article {
+    position: relative;
+    @extend .white-outset-background;
+    border-radius: $border-radius;
+
+    &::before {
+      content: '';
+      display: block;
+      height: 5px;
+      background: $green-accent-bottom;
+      border-radius: $border-radius $border-radius 0 0;
+      box-shadow: 0 1px 0 rgba(white, 0.1) inset;
+    }
+
+    span {
+      @extend .defaults;
+      display: inline-block;
+      color: black;
+    }
+  }
+
+  input:checked + .tab + article {
+    margin-top: $tab-height - 1;
+    z-index: -1;
+  }
+}

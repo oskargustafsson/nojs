@@ -1,0 +1,10 @@
+// Just for the demo
+section {
+  width: 960px;
+  margin: 0 auto;
+  border-bottom: 1px dashed gray;
+  padding: 20px 0;
+}
+
+@import "base";
+@import "styling";

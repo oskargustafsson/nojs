@@ -1,0 +1,292 @@
+$selected-color: red;
+$active-color: gray;
+
+.show-state {
+  box-shadow: 0 0 0 1px red inset; // Only for demonstration of functionality
+}
+
+
+/* CLASS TEMPLATES */
+.hidden {
+  display: none; // Should probably be replaced
+}
+
+
+/* BUTTON SET */
+.buttonset {
+  overflow: auto;
+  padding: 1px; // Needed to draw outlines properly
+
+  input {
+    @extend .hidden;
+  }
+
+  input:checked + label,
+  input + label:active,
+  button:active {
+    @extend .show-state;
+  }
+}
+
+
+/* CHECKBOX, RADIO BUTTON */
+.radio-button,
+.checkbox {
+  @extend .hidden;
+
+  + label {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    text-indent: 24px;
+    white-space: nowrap;
+  }
+
+  &:checked + label::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 10px;
+    top: 4px;
+    left: 4px;
+    @extend .show-state;
+  }
+}
+
+
+/* ON/OFF CHECKBOX */
+$on-off-checkbox-height: 20px;
+$on-off-checkbox-width: 60px;
+$on-off-checkbox-handle-width: 20px;
+$on-off-checkbox-state-width: $on-off-checkbox-width - $on-off-checkbox-handle-width;
+.on-off-checkbox {
+  overflow: hidden;
+  width: $on-off-checkbox-width;
+
+  input {
+    @extend .hidden;
+
+    + .handle {
+      @extend .show-state;
+      position: relative;
+      display: block;
+      height: $on-off-checkbox-height;
+      width: $on-off-checkbox-handle-width;
+
+      &::before, &::after {
+        font-size: 12px;
+        position: absolute;
+        text-align: center;
+        line-height: $on-off-checkbox-height;
+        vertical-align: middle;
+        top: 0px;
+        width: $on-off-checkbox-state-width;
+      }
+
+      &::before {
+        content: attr(data-on);
+        right: 100%;
+      }
+
+      &::after {
+        content: attr(data-off);
+        left: 100%;
+      }
+    }
+
+    &:checked + .handle {
+      margin-left: $on-off-checkbox-state-width;
+    }
+  }
+}
+
+
+/* SELECT LIST */
+.select {
+  display: inline-block;
+  width: 240px;
+  max-height: 180px;
+  overflow-y: auto;
+
+  input {
+    @extend .hidden;
+
+    + label {
+      display: block;
+    }
+
+    &:checked + label {
+      @extend .show-state;
+    }
+  }
+}
+
+
+/* DROPDOWN */
+$dropdown-width: 240px;
+$dropdown-height: 26px;
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  height: $dropdown-height;
+  width: $dropdown-width;
+  z-index: 10;
+
+  /* This layer makes sure that the dropdown header remains clickable,
+   * after an item has been selected */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  /* Hiding this layer when the dropdown to let the user close the dropdown
+   * by clicking the dropdown header */
+  &:focus::after {
+    display: none;
+  }
+
+  .select {
+    width: 100%;
+    overflow: hidden;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    margin: $dropdown-height 0 0 0; // Position the dropdown list below the header
+    max-height: 0px;
+    border: 0 none;
+    transition: max-height 0.3s ease;
+    transition-delay: 0.5s;   // The transition delay is required; it enables Chrome to react to the click
+
+    input {
+      + div {
+        /* Labels have to be wrapped in a div, as the label element
+        is not capable of stealing the focus from other elements.
+        This is needed to close the dropdown when an option is clicked */
+        outline: 0 none;
+        width: $dropdown-width;
+
+        > label {
+          display: block;
+        }
+      }
+
+      &:checked + div {
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+
+  &:focus .select,  /* Expand when clicking the "header" */
+  .select:focus {   /* Stay expanded when scrolling */
+    max-height: 180px;
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+  }
+}
+
+
+/* ACCORDION */
+.accordion {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+
+  input {
+    @extend .hidden;
+  }
+
+  article {
+    max-height: 0px;
+    overflow: hidden;
+  }
+
+  input:checked + label + article,
+  header:focus + article {
+    max-height: none;
+  }
+}
+
+
+/* TOOLTIP */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+
+  &::after {
+    visibility: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    content: attr(data-tooltip);
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+  }
+
+  &.north::after {
+    bottom: 100%;
+    top: auto;
+  }
+
+  &.south::after {
+    top: 100%;
+    bottom: auto;
+  }
+
+  &.east::after {
+    left: 100%;
+    right: auto;
+  }
+
+  &.west::after {
+    right: 100%;
+    left: auto;
+  }
+
+  &:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
+/* TABS */
+$tab-height: 30px;
+.tabs {
+  position: relative;
+  overflow: auto;
+
+  input {
+    @extend .hidden;
+
+    &:checked + .tab {
+      @extend .show-state;
+    }
+  }
+
+  .tab {
+    height: $tab-height;
+    float: left;
+  }
+
+  article {
+    display: none;
+    float: right;
+  }
+
+  input:checked + .tab + article {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-left: -100%;
+    margin-top: $tab-height;
+  }
+}
