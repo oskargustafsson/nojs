@@ -179,8 +179,8 @@ $dropdown-height: 26px;
     }
   }
 
-  &:focus .select,  /* Expand when clicking the "header" */
-  .select:focus {   /* Stay expanded when scrolling */
+  &:focus .select,  // Expand when clicking the "header"
+  .select:focus {   // Stay expanded when scrolling
     max-height: 180px;
     overflow-y: auto;
     transition: max-height 0.3s ease;
@@ -203,6 +203,7 @@ $dropdown-height: 26px;
     overflow: hidden;
   }
 
+  input:checked ~ article:last-of-type:first-of-type, // This somehow forces Chrome 31 to repaint, which is otherwise does not
   input:checked + label + article,
   header:focus + article {
     max-height: none;
@@ -277,6 +278,11 @@ $tab-height: 30px;
   article {
     display: none;
     float: right;
+  }
+
+  // This somehow forces Chrome 31 to repaint, which is otherwise does not
+  input:checked ~ article:last-of-type:first-of-type {
+    display: block;
   }
 
   input:checked + .tab + article {
