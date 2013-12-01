@@ -14,18 +14,18 @@
   <body>
     <!-- BUTTON -->
     <section>
-      <button class="button popout">Click me!</button>
-      <button class="button sunken">Click me!</button>
+      <button class="button popout">Button 1</button>
+      <button class="button sunken">Button 2</button>
     </section>
 
     <!-- TEXTFIELD -->
     <section>
-      <input type="text" class="textfield" placeholder="Placeholder text"></input>
+      <input type="text" class="textfield" placeholder="Textfield"></input>
     </section>
 
     <!-- TEXTAREA -->
     <section>
-      <textarea class="textarea" cols="50" rows="5" placeholder="Placeholder text"></textarea>
+      <textarea class="textarea" cols="50" rows="5" placeholder="Textarea"></textarea>
     </section>
 
     <!-- DROPDOWN -->
@@ -58,17 +58,17 @@
     <!-- CHECKBOX -->
     <section>
       <input class="checkbox" type="checkbox" id="check1" />
-      <label for="check1">Checkbox 1</label>
+      <label for="check1">Checkbox</label>
       <input class="checkbox" type="checkbox" id="check2" checked/>
-      <label for="check2">Checkbox 2</label>
+      <label for="check2">Checkbox</label>
     </section>
 
     <!-- RADIO BUTTON -->
     <section>
       <input class="radio-button" type="radio" id="radio1" name="radios1" />
-      <label for="radio1">Radio button 1</label>
+      <label for="radio1">Radio button</label>
       <input class="radio-button" type="radio" id="radio2" name="radios1" checked />
-      <label for="radio2">Radio button 2</label>
+      <label for="radio2">Radio button</label>
     </section>
 
     <!-- ON/OFF CHECKBOX -->
@@ -85,14 +85,18 @@
 
     <!-- BUTTON SET -->
     <section>
-      <div class="buttonset"><button>Click me!</button><button>Click me!</button><button>Click me!</button></div>
+      <div class="buttonset">
+        <button>Button</button>
+        <button>set</button>
+        <button>items</button>
+      </div>
       <div class="buttonset">
         <input type="checkbox" id="check3" />
-        <label for="check3"><strong>Bold</strong></label>
+        <label for="check3"><strong>B</strong></label>
         <input type="checkbox" id="check4"/>
-        <label for="check4"><u>Underline</u></label>
+        <label for="check4"><u>U</u></label>
         <input type="checkbox" id="check5"/>
-        <label for="check5"><em>Italic</em></label>
+        <label for="check5"><em>I</em></label>
       </div>
       <div class="buttonset">
         <!-- Use icons! -->
@@ -109,8 +113,8 @@
     <section>
       <div class="select">
         <input type="radio" id="radio6" name="radios3" />
-        <label for="radio6">Option 1</label>
-        <input type="radio" id="radio7" name="radios3" checked />
+        <label for="radio6">Select list 1 (single choise)</label>
+        <input type="radio" id="radio7" name="radios3" />
         <label for="radio7">Option 2</label>
         <input type="radio" id="radio8" name="radios3" />
         <label for="radio8">Option 3</label>
@@ -129,8 +133,8 @@
       </div>
       <div class="select">
         <input type="checkbox" id="check6" />
-        <label for="check6">Option 1</label>
-        <input type="checkbox" id="check7" checked />
+        <label for="check6">Select list 2 (multiple choise)</label>
+        <input type="checkbox" id="check7" />
         <label for="check7">Option 2</label>
         <input type="checkbox" id="check8"/>
         <label for="check8">Option 3</label>
@@ -152,33 +156,33 @@
     <!-- ACCORDION -->
     <section>
       <div class="accordion">
-        <header tabindex="0">First</header>
+        <header tabindex="0">Accordion 1 (collapse on focus lost)</header>
         <article><span>Roof party lo-fi fap, photo booth street art irony chambray whatever ethical mumblecore brunch Marfa DIY Vice. Wes Anderson Thundercats gluten-free organic, biodiesel pork belly synth pug tofu chillwave occupy Echo Park flannel. Cliche fingerstache slow-carb, Tonx keffiyeh meh gastropub sriracha cornhole Vice distillery craft beer.</span></article>
-        <header tabindex="0">Second</header>
+        <header tabindex="0">Header</header>
         <article><span>Bitters tousled disrupt, chillwave Williamsburg direct trade letterpress drinking vinegar quinoa jean shorts. Narwhal Marfa distillery, letterpress tofu swag Helvetica.</span></article>
-        <header tabindex="0">Third</header>
+        <header tabindex="0">Header</header>
         <article><span>Chia American Apparel banh mi, street art slow-carb Tumblr organic ethical drinking vinegar food truck single-origin coffee before they sold out wolf DIY. Craft beer next level forage biodiesel Blue Bottle meggings aesthetic beard before they sold out, fixie viral Marfa selvage Thundercats Austin.</span></article>
       </div> &nbsp;
       <div class="accordion">
         <input type="radio" name="radios5" id="radio24" />
-        <label class="header" for="radio24">First</label>
+        <label class="header" for="radio24">Accordion 2 (single expanded)</label>
         <article><span>Roof party lo-fi fap, photo booth street art irony chambray whatever ethical mumblecore brunch Marfa DIY Vice. Wes Anderson Thundercats gluten-free organic, biodiesel pork belly synth pug tofu chillwave occupy Echo Park flannel. Cliche fingerstache slow-carb, Tonx keffiyeh meh gastropub sriracha cornhole Vice distillery craft beer.</span></article>
         <input type="radio" name="radios5" id="radio25" />
-        <label class="header" for="radio25">Second</label>
+        <label class="header" for="radio25">Header</label>
         <article><span>Bitters tousled disrupt, chillwave Williamsburg direct trade letterpress drinking vinegar quinoa jean shorts. Narwhal Marfa distillery, letterpress tofu swag Helvetica.</span></article>
         <input type="radio" name="radios5" id="radio26"/>
-        <label class="header" for="radio26">Third</label>
+        <label class="header" for="radio26">Header</label>
         <article><span>Chia American Apparel banh mi, street art slow-carb Tumblr organic ethical drinking vinegar food truck single-origin coffee before they sold out wolf DIY. Craft beer next level forage biodiesel Blue Bottle meggings aesthetic beard before they sold out, fixie viral Marfa selvage Thundercats Austin.</span></article>
       </div> &nbsp;
       <div class="accordion">
         <input type="checkbox" id="check15" />
-        <label class="header" for="check15">First</label>
+        <label class="header" for="check15">Accordion 3 (multiple expanded)</label>
         <article><span>Roof party lo-fi fap, photo booth street art irony chambray whatever ethical mumblecore brunch Marfa DIY Vice. Wes Anderson Thundercats gluten-free organic, biodiesel pork belly synth pug tofu chillwave occupy Echo Park flannel. Cliche fingerstache slow-carb, Tonx keffiyeh meh gastropub sriracha cornhole Vice distillery craft beer.</span></article>
         <input type="checkbox" id="check16"/>
-        <label class="header" for="check16">Second</label>
+        <label class="header" for="check16">Header</label>
         <article><span>Bitters tousled disrupt, chillwave Williamsburg direct trade letterpress drinking vinegar quinoa jean shorts. Narwhal Marfa distillery, letterpress tofu swag Helvetica.</span></article>
         <input type="checkbox" id="check17"/>
-        <label class="header" for="check17">Third</label>
+        <label class="header" for="check17">Header</label>
         <article><span>Chia American Apparel banh mi, street art slow-carb Tumblr organic ethical drinking vinegar food truck single-origin coffee before they sold out wolf DIY. Craft beer next level forage biodiesel Blue Bottle meggings aesthetic beard before they sold out, fixie viral Marfa selvage Thundercats Austin.</span></article>
       </div>
     </section>
@@ -187,13 +191,13 @@
     <section>
       <div class="tabs">
         <input type="radio" name="radios6" id="radio27" checked />
-        <label class="tab" for="radio27">First</label>
+        <label class="tab" for="radio27">Tab</label>
         <article><span>Roof party lo-fi fap, photo booth street art irony chambray whatever ethical mumblecore brunch Marfa DIY Vice. Wes Anderson Thundercats gluten-free organic, biodiesel pork belly synth pug tofu chillwave occupy Echo Park flannel. Cliche fingerstache slow-carb, Tonx keffiyeh meh gastropub sriracha cornhole Vice distillery craft beer.</span></article>
         <input type="radio" name="radios6" id="radio28" />
-        <label class="tab" for="radio28">Second</label>
+        <label class="tab" for="radio28">Tab</label>
         <article><span>Bitters tousled disrupt, chillwave Williamsburg direct trade letterpress drinking vinegar quinoa jean shorts. Narwhal Marfa distillery, letterpress tofu swag Helvetica.</span></article>
         <input type="radio" name="radios6" id="radio29" />
-        <label class="tab" for="radio29">Third</label>
+        <label class="tab" for="radio29">Tab</label>
         <article><span>Chia American Apparel banh mi, street art slow-carb Tumblr organic ethical drinking vinegar food truck single-origin coffee before they sold out wolf DIY. Craft beer next level forage biodiesel Blue Bottle meggings aesthetic beard before they sold out, fixie viral Marfa selvage Thundercats Austin.</span></article>
       </div>
     </section>
@@ -206,8 +210,8 @@
       <div class="tooltip-container west" data-tooltip="I'm a tooltip">West tooltip</div> &nbsp;
       <div class="tooltip-container north east" data-tooltip="I'm a tooltip">Northeast tooltip</div> &nbsp;
       <div class="tooltip-container south east" data-tooltip="I'm a tooltip">Southeast tooltip</div> &nbsp;
-      <div class="tooltip-container north west" data-tooltip="I'm a tooltip">Northwest tooltip</div> &nbsp;
-      <div class="tooltip-container south west" data-tooltip="I'm a tooltip">Southwest tooltip</div>
+      <div class="tooltip-container south west" data-tooltip="I'm a tooltip">Southwest tooltip</div> &nbsp;
+      <div class="tooltip-container north west" data-tooltip="I'm a tooltip">Northwest tooltip</div>
     </section>
   </body>
 </html>
