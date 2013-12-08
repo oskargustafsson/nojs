@@ -43,13 +43,13 @@ textarea, body {
   vertical-align: top;
   font-weight: bold;
   line-height: 16px;
-  transition: -webkit-filter 0.2s;
+  @include transition(-webkit-filter 0.2s);
 }
 
 .pushed-in-button {
   padding-top: 6px;
   padding-bottom: 4px;
-  background-image: linear-gradient(to bottom, darken($green-accent-dark, 8), darken($green-accent-light, 10));
+  @include linear-gradient(darken($green-accent-dark, 8), darken($green-accent-light, 10));
   box-shadow: 0px -1px 1px rgba(black, 0.5),
               0px 1px 0px rgba(white, 0.1),
               0px 0px 8px rgba(black, 0.4) inset;
@@ -57,7 +57,7 @@ textarea, body {
 
 .inset-row {
   color: black;
-  background-image: linear-gradient(to bottom, $gray-background-dark, $gray-background-light);
+  @include linear-gradient($gray-background-dark, $gray-background-light);
   box-shadow: 6px 0px 8px -6px rgba(black, 0.5) inset,
               -6px 0px 8px -6px rgba(black, 0.5) inset,
               0 1px 0 rgba(white, 0.25) inset,
@@ -66,13 +66,13 @@ textarea, body {
 
 .popout-row {
   color: black;
-  background-image: linear-gradient(to bottom, $gray-background-dark, $gray-background-light);
+  @include linear-gradient($gray-background-dark, $gray-background-light);
   box-shadow: 0 1px 0 rgba(white, 0.25) inset,
               0 -1px 0 rgba(black, 0.25) inset;
 }
 
 .green-background {
-  background-image: linear-gradient(to bottom, $green-accent-light, $green-accent-dark);
+  @include linear-gradient($green-accent-light, $green-accent-dark);
   box-shadow: 0 1px 0 rgba(white, 0.25) inset,
               0 -1px 0 rgba(black, 0.5) inset;
   text-shadow: 0 1px 0 rgba(white, 0.2);
@@ -82,19 +82,19 @@ textarea, body {
   box-shadow: 0 -1px 0 rgba(black, 0.5),
               0 1px 8px rgba(black, 0.5) inset,
               0 0px 1px black inset;
-  background-image: linear-gradient(to bottom, $light-background-dark, $light-background-light);
+  @include linear-gradient($light-background-dark, $light-background-light);
 }
 
 .white-outset-background {
   box-shadow: 0 -1px 0 rgba(black, 0.5) inset,
               0 -1px 8px rgba(black, 0.5) inset,
               0 1px 1px black;
-  background-image: linear-gradient(to bottom, $light-background-light, $light-background-dark);
+  @include linear-gradient($light-background-light, $light-background-dark);
 }
 
 .pushed-in {
   -webkit-filter: brightness(0.8);
-  transition: -webkit-filter 0.05s;
+  @include transition(-webkit-filter 0.05s);
 }
 
 
@@ -120,7 +120,7 @@ textarea, body {
   &.popout:active {
     margin-top: 1px;
     margin-bottom: 0px;
-    background-image: linear-gradient(to bottom, darken($green-accent-light, 5), darken($green-accent-dark, 8));
+    @include linear-gradient(darken($green-accent-light, 5), darken($green-accent-dark, 8));
   }
 
   &.sunken:active {
@@ -178,7 +178,7 @@ textarea, body {
 
   &:checked + label::before {
     border-top: 1px solid rgba(white, 0.33);
-    background-image: linear-gradient(to bottom, $black-background-light, $black-background-dark);
+    @include linear-gradient($black-background-light, $black-background-dark);
     border-bottom: 1px solid black;
     box-shadow: 0 1px 3px rgba(black, 0.75);
   }
@@ -202,7 +202,7 @@ textarea, body {
   input + .handle {
     @extend .popout-row;
     border-radius: $border-radius;
-    transition: margin-left 0.4s ease;
+    @include transition(margin-left 0.4s ease);
 
     &::before, &::after {
       @extend .white-inset-background;
@@ -211,7 +211,7 @@ textarea, body {
     }
 
     &::before {
-      background-image: linear-gradient(to bottom, $green-accent-dark, $green-accent-light);
+      @include linear-gradient($green-accent-dark, $green-accent-light);
     }
   }
 }
@@ -312,13 +312,13 @@ textarea, body {
 
     + article {
       max-height: 500px;
-      transition: max-height 0.4s ease;
+      @include transition(max-height 0.4s ease);
     }
   }
 
   article {
     @extend .white-inset-background;
-    transition: max-height 0.4s ease;
+    @include transition(max-height 0.4s ease);
     border-radius: 0px 0px $border-radius $border-radius;
 
     span {
@@ -333,17 +333,16 @@ textarea, body {
 /* TOOLTIP */
 .tooltip-container {
   &::after {
-    transition: visibility 0s linear 0.5s,
-                opacity 0.5s linear;
+    @include transition(visibility 0s linear 0.5s, opacity 0.5s linear);
     border-radius: $border-radius;
     padding: 1px 5px;
     color: black;
-    background-image: linear-gradient(to bottom, $light-background-light, $light-background-dark);
+    @include linear-gradient($light-background-light, $light-background-dark);
     box-shadow: 0 1px 1px rgba(black, 0.5);
   }
 
   &:hover::after {
-    transition-delay: 0s;
+    @include transition-delay(0s);
   }
 }
 

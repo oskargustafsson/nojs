@@ -22,17 +22,17 @@ Browser compatibility
 ---------------------
 nojs.css has been tested in the following browsers.
 
-|                 | Chrome | Firefox | IE10 |
-| --------------- | ------ | ------- | ---- |
-| Button          | Yes    | Yes     | Yes  |
-| Textfield       | Yes    | Yes     | Yes  |
-| Textarea        | Yes    | Yes     | Yes  |
-| Dropdown        | Yes    | Yes     | Yes  |
-| Checkbox        | Yes    | Yes     | Yes  |
-| Radio button    | Yes    | Yes     | Yes  |
-| On/off checkbox | Yes    | Yes     | Yes  |
-| Button set      | Yes    | Yes     | Yes  |
-| Select list     | Yes    | Yes     | Yes  |
-| Accordion       | Yes    | Yes     | Yes  |
-| Tabs            | Yes    | Yes     | Yes  |
-| Tooltip         | Yes    | Yes     | No   |
+|                 | Chrome | Firefox | IE9 | IE10 |
+| --------------- | ------ | ------- | --- | ---- |
+| Button          | Yes    | Yes     | Yes | Yes  |
+| Textfield       | Yes    | Yes     | Yes | Yes  |
+| Textarea        | Yes    | Yes     | Yes | Yes  |
+| Dropdown        | Yes    | Yes     | No  | Yes  |
+| Checkbox        | Yes    | Yes     | Yes | Yes  |
+| Radio button    | Yes    | Yes     | Yes | Yes  |
+| On/off checkbox | Yes    | Yes     | Yes | Yes  |
+| Button set      | Yes    | Yes     | Yes | Yes  |
+| Select list     | Yes    | Yes     | Yes | Yes  |
+| Accordion       | Yes    | Yes     | Yes | Yes  |
+| Tabs            | Yes    | Yes     | Yes | Yes  |
+| Tooltip         | Yes    | Yes     | Yes | No   |

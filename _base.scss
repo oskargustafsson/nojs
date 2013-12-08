@@ -156,8 +156,8 @@ $dropdown-height: 26px;
     margin: $dropdown-height 0 0 0; // Position the dropdown list below the header
     max-height: 0px;
     border: 0 none;
-    transition: max-height 0.3s ease;
-    transition-delay: 0.5s;   // The transition delay is required; it enables Chrome to react to the click
+    @include transition(max-height 0.3s ease);
+    @include transition-delay(0.5s);   // The transition delay is required; it enables Chrome to react to the click
 
     input {
       + div {
@@ -183,7 +183,7 @@ $dropdown-height: 26px;
   .select:focus {   // Stay expanded when scrolling
     max-height: 180px;
     overflow-y: auto;
-    transition: max-height 0.3s ease;
+    @include transition(max-height 0.3s ease);
   }
 }
 
