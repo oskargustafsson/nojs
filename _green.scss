@@ -49,7 +49,7 @@ textarea, body {
 .pushed-in-button {
   padding-top: 6px;
   padding-bottom: 4px;
-  @include linear-gradient(darken($green-accent-dark, 8), darken($green-accent-light, 10));
+  @include simple-gradient(darken($green-accent-dark, 8), darken($green-accent-light, 10));
   box-shadow: 0px -1px 1px rgba(black, 0.5),
               0px 1px 0px rgba(white, 0.1),
               0px 0px 8px rgba(black, 0.4) inset;
@@ -57,7 +57,7 @@ textarea, body {
 
 .inset-row {
   color: black;
-  @include linear-gradient($gray-background-dark, $gray-background-light);
+  @include simple-gradient($gray-background-dark, $gray-background-light);
   box-shadow: 6px 0px 8px -6px rgba(black, 0.5) inset,
               -6px 0px 8px -6px rgba(black, 0.5) inset,
               0 1px 0 rgba(white, 0.25) inset,
@@ -66,13 +66,13 @@ textarea, body {
 
 .popout-row {
   color: black;
-  @include linear-gradient($gray-background-dark, $gray-background-light);
+  @include simple-gradient($gray-background-dark, $gray-background-light);
   box-shadow: 0 1px 0 rgba(white, 0.25) inset,
               0 -1px 0 rgba(black, 0.25) inset;
 }
 
 .green-background {
-  @include linear-gradient($green-accent-light, $green-accent-dark);
+  @include simple-gradient($green-accent-light, $green-accent-dark);
   box-shadow: 0 1px 0 rgba(white, 0.25) inset,
               0 -1px 0 rgba(black, 0.5) inset;
   text-shadow: 0 1px 0 rgba(white, 0.2);
@@ -82,14 +82,14 @@ textarea, body {
   box-shadow: 0 -1px 0 rgba(black, 0.5),
               0 1px 8px rgba(black, 0.5) inset,
               0 0px 1px black inset;
-  @include linear-gradient($light-background-dark, $light-background-light);
+  @include simple-gradient($light-background-dark, $light-background-light);
 }
 
 .white-outset-background {
   box-shadow: 0 -1px 0 rgba(black, 0.5) inset,
               0 -1px 8px rgba(black, 0.5) inset,
               0 1px 1px black;
-  @include linear-gradient($light-background-light, $light-background-dark);
+  @include simple-gradient($light-background-light, $light-background-dark);
 }
 
 .pushed-in {
@@ -120,7 +120,7 @@ textarea, body {
   &.popout:active {
     margin-top: 1px;
     margin-bottom: 0px;
-    @include linear-gradient(darken($green-accent-light, 5), darken($green-accent-dark, 8));
+    @include simple-gradient(darken($green-accent-light, 5), darken($green-accent-dark, 8));
   }
 
   &.sunken:active {
@@ -172,13 +172,13 @@ textarea, body {
     margin-bottom: 10px;
 
     &:active {
-      background: linear-gradient(to bottom, darken($light-background-dark, 20), darken($light-background-light, 10));
+      background: simple-gradient(to bottom, darken($light-background-dark, 20), darken($light-background-light, 10));
     }
   }
 
   &:checked + label::before {
     border-top: 1px solid rgba(white, 0.33);
-    @include linear-gradient($black-background-light, $black-background-dark);
+    @include simple-gradient($black-background-light, $black-background-dark);
     border-bottom: 1px solid black;
     box-shadow: 0 1px 3px rgba(black, 0.75);
   }
@@ -211,7 +211,7 @@ textarea, body {
     }
 
     &::before {
-      @include linear-gradient($green-accent-dark, $green-accent-light);
+      @include simple-gradient($green-accent-dark, $green-accent-light);
     }
   }
 }
@@ -337,7 +337,7 @@ textarea, body {
     border-radius: $border-radius;
     padding: 1px 5px;
     color: black;
-    @include linear-gradient($light-background-light, $light-background-dark);
+    @include simple-gradient($light-background-light, $light-background-dark);
     box-shadow: 0 1px 1px rgba(black, 0.5);
   }
 

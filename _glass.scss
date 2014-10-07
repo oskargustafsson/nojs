@@ -1,0 +1,71 @@
+$padding: 1em;
+$border-radius: 0.1em;
+$outer-shadow: 0 0.1em 0.1em rgba(black, 0.2);
+
+:focus {outline:none;}
+
+body {
+  padding: 4em;
+  background: #909090;
+}
+
+body, button, input, textarea {
+  font-family: 'Roboto', sans-serif;
+  color: rgb(70, 70, 70);
+}
+
+.glass-background {
+  background: transparent;
+  @include uber-gradient(top left,
+                         rgba(white, 0.5) 0%,
+                         rgba(white, 0.45) 15%,
+                         rgba(white, 0.6) 20%,
+                         rgba(white, 0.6) 25%,
+                         rgba(white, 0.45) 35%,
+                         rgba(white, 0.6) 40%,
+                         rgba(white, 0.45) 45%,
+                         rgba(white, 0.7) 60%,
+                         rgba(white, 0.45) 80%,
+                         rgba(white, 0.5) 100%);
+  box-shadow: 0 0 0.5em rgba(white, 0.5) inset,
+              $outer-shadow;
+}
+
+.button {
+  position: relative;
+  @extend .glass-background;
+  padding: $padding/2 $padding;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  text-shadow: 0 1px 0 white;
+  @include transition(transform 0.1s, box-shadow 0.1s);
+
+  &:before {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background: white;
+    opacity: 0;
+    @include transition(opacity 0.1s);
+  }
+
+  &:hover:before {
+    opacity: 0.15;
+  }
+
+  &:active {
+    @include transform(translateY(0.1em));
+    box-shadow: 0 0 0.5em rgba(white, 0.5) inset;
+  }
+}
+
+.textfield, .textarea {
+  background: transparent;
+  border: 1px solid rgba(white, 0.5);
+  padding: $padding/2 $padding;
+  box-shadow: 0 0em 0.5em rgba(0, 0, 0, 0.2) inset, $outer-shadow;
+  @include simple-gradient(rgba(white, 0.7), rgba(white, 0.9));
+}
