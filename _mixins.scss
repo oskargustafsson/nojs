@@ -1,0 +1,58 @@
+@mixin uber-gradient($values...) {
+  background-image: -ms-linear-gradient($values), -ms-linear-gradient(top, rgba(white, 0) 0%, rgba(white, 0.5) 37%, rgba(white, 0) 100%);
+  background-image: -moz-linear-gradient($values), -moz-linear-gradient(top, rgba(white, 0) 0%, rgba(white, 0.5) 37%, rgba(white, 0) 100%);
+  background-image: -o-linear-gradient($values), -o-linear-gradient(top, rgba(white, 0) 0%, rgba(white, 0.5) 37%, rgba(white, 0) 100%);
+  background-image: -webkit-linear-gradient($values), -webkit-linear-gradient(top, rgba(white, 0) 0%, rgba(white, 0.5) 37%, rgba(white, 0) 100%);
+}
+
+@mixin simple-gradient($from, $to) {
+  //background: mix($from, $to);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $from), color-stop(1, $to));
+  background-image: -webkit-linear-gradient(top, $from, $to);
+  background-image: -moz-linear-gradient(top, $from, $to);
+  background-image: -ms-linear-gradient(top, $from, $to);
+  background-image: -o-linear-gradient(top, $from, $to);
+  background-image: linear-gradient(top, bottom, $from, $to);
+}
+
+@mixin transform($values...) {
+  -webkit-transform: $values;
+  -moz-transform: $values;
+  -ms-transform: $values;
+  -o-transform: $values;
+  transform: $values;
+}
+
+// loops through all arguments and prefixes the ones that need it (in this case only transform)
+@function vendor-args($arg, $vendor) {
+    $result: ();
+    @each $i in $arg {
+      @if $i == transform { $result: append($result, #{$vendor}$i); }
+      @else { $result: append($result, $i); }
+    }
+  @return $result;
+}
+
+// general vendor mixin
+@mixin vendor($property, $args...){
+  @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+    $out: null;
+    @each $arg in nth($args,1) {
+      $out: ($out, vendor-args($arg, $vendor));
+    }
+    #{$vendor}#{$property}: $out;
+  }
+}
+
+// general transition mixin
+@mixin transition($args...) {
+  @include vendor(transition, $args);
+}
+
+@mixin transition-delay($values...) {
+  -webkit-transition-delay: $values;
+  -moz-transition-delay: $values;
+  -ms-transition-delay: $values;
+  -o-transition-delay: $values;
+  transition-delay: $values;
+}
