@@ -4,7 +4,7 @@ A pure CSS approach to HTML form elements
 
 Demo
 ----
-Can be found [here](http://skeda.se/nojs/examples.html).
+http://oskargustafsson.github.io/nojs/
 
 Build requirements
 ------------------

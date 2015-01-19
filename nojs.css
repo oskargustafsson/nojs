@@ -1,0 +1,547 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.show-state, .buttonset input:checked + label,
+.buttonset input + label:active,
+.buttonset button:active, .radio-button:checked + label::before,
+.checkbox:checked + label::before, .on-off-checkbox input + .handle, .select input:checked + label, .tabs input:checked + .tab {
+  box-shadow: 0 0 0 1px red inset; }
+
+/* CLASS TEMPLATES */
+.hidden, .buttonset input, .radio-button,
+.checkbox, .on-off-checkbox input, .select input, .accordion input, .tabs input {
+  display: none; }
+
+/* BUTTON SET */
+.buttonset {
+  overflow: auto;
+  padding: 1px; }
+
+/* CHECKBOX, RADIO BUTTON */
+.radio-button + label,
+.checkbox + label {
+  display: block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  text-indent: 24px;
+  white-space: nowrap; }
+.radio-button:checked + label::before,
+.checkbox:checked + label::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 10px;
+  top: 4px;
+  left: 4px; }
+
+/* ON/OFF CHECKBOX */
+.on-off-checkbox {
+  overflow: hidden;
+  width: 60px; }
+  .on-off-checkbox input + .handle {
+    position: relative;
+    display: block;
+    height: 20px;
+    width: 20px; }
+    .on-off-checkbox input + .handle::before, .on-off-checkbox input + .handle::after {
+      font-size: 12px;
+      position: absolute;
+      text-align: center;
+      line-height: 20px;
+      vertical-align: middle;
+      top: 0px;
+      width: 40px; }
+    .on-off-checkbox input + .handle::before {
+      content: attr(data-on);
+      right: 100%; }
+    .on-off-checkbox input + .handle::after {
+      content: attr(data-off);
+      left: 100%; }
+  .on-off-checkbox input:checked + .handle {
+    margin-left: 40px; }
+
+/* SELECT LIST */
+.select {
+  display: inline-block;
+  width: 240px;
+  max-height: 180px;
+  overflow-y: auto; }
+  .select input + label {
+    display: block; }
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  height: 26px;
+  width: 240px;
+  z-index: 10;
+  /* This layer makes sure that the dropdown header remains clickable,
+   * after an item has been selected */
+  /* Hiding this layer when the dropdown to let the user close the dropdown
+   * by clicking the dropdown header */ }
+  .dropdown::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  .dropdown:focus::after {
+    display: none; }
+  .dropdown .select {
+    width: 100%;
+    overflow: hidden;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    margin: 26px 0 0 0;
+    max-height: 0px;
+    border: 0 none;
+    -webkit-transition: max-height 0.3s ease;
+    -moz-transition: max-height 0.3s ease;
+    -ms-transition: max-height 0.3s ease;
+    -o-transition: max-height 0.3s ease;
+    transition: max-height 0.3s ease;
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay: 0.5s;
+    -ms-transition-delay: 0.5s;
+    -o-transition-delay: 0.5s;
+    transition-delay: 0.5s; }
+    .dropdown .select input + div {
+      /* Labels have to be wrapped in a div, as the label element
+      is not capable of stealing the focus from other elements.
+      This is needed to close the dropdown when an option is clicked */
+      outline: 0 none;
+      width: 240px; }
+      .dropdown .select input + div > label {
+        display: block; }
+    .dropdown .select input:checked + div {
+      position: absolute;
+      top: 0; }
+  .dropdown:focus .select,
+  .dropdown .select:focus {
+    max-height: 180px;
+    overflow-y: auto;
+    -webkit-transition: max-height 0.3s ease;
+    -moz-transition: max-height 0.3s ease;
+    -ms-transition: max-height 0.3s ease;
+    -o-transition: max-height 0.3s ease;
+    transition: max-height 0.3s ease; }
+
+/* ACCORDION */
+.accordion {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top; }
+  .accordion article {
+    max-height: 0px;
+    overflow: hidden; }
+  .accordion input:checked ~ article:last-of-type:first-of-type,
+  .accordion input:checked + label + article,
+  .accordion header:focus + article {
+    max-height: none; }
+
+/* TOOLTIP */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  overflow: visible; }
+  .tooltip-container::after {
+    visibility: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    content: attr(data-tooltip);
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1000; }
+  .tooltip-container.north::after {
+    bottom: 100%;
+    top: auto; }
+  .tooltip-container.south::after {
+    top: 100%;
+    bottom: auto; }
+  .tooltip-container.east::after {
+    left: 100%;
+    right: auto; }
+  .tooltip-container.west::after {
+    right: 100%;
+    left: auto; }
+  .tooltip-container:hover::after {
+    visibility: visible;
+    opacity: 1; }
+
+/* TABS */
+.tabs {
+  position: relative;
+  overflow: auto; }
+  .tabs .tab {
+    height: 30px;
+    float: left; }
+  .tabs article {
+    display: none;
+    float: right; }
+  .tabs input:checked ~ article:last-of-type:first-of-type {
+    display: block; }
+  .tabs input:checked + .tab + article {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-left: -100%;
+    margin-top: 30px; }
+
+body {
+  background: #333333;
+  color: white; }
+
+textarea, body {
+  font-family: Arial; }
+
+/* CLASS TEMPLATES */
+.show-state, .buttonset input:checked + label,
+.buttonset input + label:active,
+.buttonset button:active, .radio-button:checked + label::before,
+.checkbox:checked + label::before, .on-off-checkbox input + .handle, .select input:checked + label, .tabs input:checked + .tab {
+  box-shadow: none; }
+
+.defaults, .basic-button, .button, .buttonset input + label,
+.buttonset button, .textfield, .textarea, .select input + label, .dropdown .select input + div > label, .accordion input + label,
+.accordion header, .accordion article span, .tabs .tab, .tabs article span {
+  border: 0 none;
+  font-size: 14px;
+  border-radius: 2px;
+  padding: 5px 10px; }
+
+.basic-button, .button, .buttonset input + label,
+.buttonset button {
+  position: relative;
+  margin: 0px 10px 1px 0;
+  display: inline-block;
+  vertical-align: top;
+  font-weight: bold;
+  line-height: 16px;
+  -webkit-transition: -webkit-filter 0.2s;
+  -moz-transition: -webkit-filter 0.2s;
+  -ms-transition: -webkit-filter 0.2s;
+  -o-transition: -webkit-filter 0.2s;
+  transition: -webkit-filter 0.2s; }
+
+.pushed-in-button, .button.sunken:active, .buttonset input:checked + label,
+.buttonset input + label:active,
+.buttonset button:active {
+  padding-top: 6px;
+  padding-bottom: 4px;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #1b3818), color-stop(1, #328219));
+  background-image: -webkit-linear-gradient(top, #1b3818, #328219);
+  background-image: -moz-linear-gradient(top, #1b3818, #328219);
+  background-image: -ms-linear-gradient(top, #1b3818, #328219);
+  background-image: -o-linear-gradient(top, #1b3818, #328219);
+  background-image: linear-gradient(top, bottom, #1b3818, #328219);
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.4) inset; }
+
+.inset-row, .select input + label {
+  color: black;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #8a8a8a), color-stop(1, #a2a2a2));
+  background-image: -webkit-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: -moz-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: -ms-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: -o-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: linear-gradient(top, bottom, #8a8a8a, #a2a2a2);
+  box-shadow: 6px 0px 8px -6px rgba(0, 0, 0, 0.5) inset, -6px 0px 8px -6px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 -1px 0 rgba(0, 0, 0, 0.25) inset; }
+
+.popout-row, .on-off-checkbox input + .handle, .dropdown, .dropdown .select input + div > label, .accordion input + label,
+.accordion header, .tabs .tab {
+  color: black;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #8a8a8a), color-stop(1, #a2a2a2));
+  background-image: -webkit-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: -moz-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: -ms-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: -o-linear-gradient(top, #8a8a8a, #a2a2a2);
+  background-image: linear-gradient(top, bottom, #8a8a8a, #a2a2a2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 -1px 0 rgba(0, 0, 0, 0.25) inset; }
+
+.green-background, .basic-button, .button, .buttonset input + label,
+.buttonset button, .select input:checked + label, .dropdown::before, .accordion input:checked + label,
+.accordion header:focus, .tabs input:checked + .tab {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #43ad21), color-stop(1, #295524));
+  background-image: -webkit-linear-gradient(top, #43ad21, #295524);
+  background-image: -moz-linear-gradient(top, #43ad21, #295524);
+  background-image: -ms-linear-gradient(top, #43ad21, #295524);
+  background-image: -o-linear-gradient(top, #43ad21, #295524);
+  background-image: linear-gradient(top, bottom, #43ad21, #295524);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 -1px 0 rgba(0, 0, 0, 0.5) inset;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2); }
+
+.white-inset-background, .textfield, .textarea, .radio-button + label,
+.checkbox + label, .on-off-checkbox input + .handle::before, .on-off-checkbox input + .handle::after, .accordion article {
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 8px rgba(0, 0, 0, 0.5) inset, 0 0px 1px black inset;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c2c2c2), color-stop(1, #f3f3f3));
+  background-image: -webkit-linear-gradient(top, #c2c2c2, #f3f3f3);
+  background-image: -moz-linear-gradient(top, #c2c2c2, #f3f3f3);
+  background-image: -ms-linear-gradient(top, #c2c2c2, #f3f3f3);
+  background-image: -o-linear-gradient(top, #c2c2c2, #f3f3f3);
+  background-image: linear-gradient(top, bottom, #c2c2c2, #f3f3f3); }
+
+.white-outset-background, .tabs article {
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5) inset, 0 -1px 8px rgba(0, 0, 0, 0.5) inset, 0 1px 1px black;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(1, #c2c2c2));
+  background-image: -webkit-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: -moz-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: -ms-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: -o-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: linear-gradient(top, bottom, #f3f3f3, #c2c2c2); }
+
+.pushed-in, .select input + label:active, .dropdown:active::before, .dropdown .select input + div > label:active {
+  -webkit-filter: brightness(0.8);
+  -webkit-transition: -webkit-filter 0.05s;
+  -moz-transition: -webkit-filter 0.05s;
+  -ms-transition: -webkit-filter 0.05s;
+  -o-transition: -webkit-filter 0.05s;
+  transition: -webkit-filter 0.05s; }
+
+/* TEXTFIELD */
+/* TEXTAREA */
+/* BUTTON */
+.button {
+  outline: none; }
+  .button.popout:active {
+    margin-top: 1px;
+    margin-bottom: 0px;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3b981d), color-stop(1, #1b3818));
+    background-image: -webkit-linear-gradient(top, #3b981d, #1b3818);
+    background-image: -moz-linear-gradient(top, #3b981d, #1b3818);
+    background-image: -ms-linear-gradient(top, #3b981d, #1b3818);
+    background-image: -o-linear-gradient(top, #3b981d, #1b3818);
+    background-image: linear-gradient(top, bottom, #3b981d, #1b3818); }
+
+/* BUTTON SET */
+.buttonset {
+  margin-bottom: 20px;
+  padding-top: 1px; }
+  .buttonset input + label,
+  .buttonset button {
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 0px;
+    font-weight: inherit;
+    color: black;
+    float: left; }
+  .buttonset input + label:first-of-type,
+  .buttonset button:first-child {
+    border-radius: 2px 0px 0px 2px; }
+  .buttonset input + label:last-of-type,
+  .buttonset button:last-child {
+    border-radius: 0px 2px 2px 0px; }
+
+/* CHECKBOX, RADIO BUTTON */
+.radio-button + label,
+.checkbox + label {
+  margin-bottom: 10px; }
+  .radio-button + label:active,
+  .checkbox + label:active {
+    background: simple-gradient(to bottom, #8f8f8f, #d9d9d9); }
+.radio-button:checked + label::before,
+.checkbox:checked + label::before {
+  border-top: 1px solid rgba(255, 255, 255, 0.33);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, bottom, #333333, #222222);
+  border-bottom: 1px solid black;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+/* RADIO BUTTON */
+.radio-button + label {
+  border-radius: 20px; }
+  .radio-button + label::before {
+    border-radius: 12px; }
+
+/* ON/OFF CHECKBOX */
+.on-off-checkbox {
+  border-radius: 2px; }
+  .on-off-checkbox input + .handle {
+    border-radius: 2px;
+    -webkit-transition: margin-left 0.4s ease;
+    -moz-transition: margin-left 0.4s ease;
+    -ms-transition: margin-left 0.4s ease;
+    -o-transition: margin-left 0.4s ease;
+    transition: margin-left 0.4s ease; }
+    .on-off-checkbox input + .handle::before, .on-off-checkbox input + .handle::after {
+      text-transform: uppercase;
+      font-weight: bold; }
+    .on-off-checkbox input + .handle::before {
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #295524), color-stop(1, #43ad21));
+      background-image: -webkit-linear-gradient(top, #295524, #43ad21);
+      background-image: -moz-linear-gradient(top, #295524, #43ad21);
+      background-image: -ms-linear-gradient(top, #295524, #43ad21);
+      background-image: -o-linear-gradient(top, #295524, #43ad21);
+      background-image: linear-gradient(top, bottom, #295524, #43ad21); }
+
+/* SELECT LIST */
+.select {
+  margin-right: 20px;
+  border-radius: 2px;
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.1); }
+  .select input + label {
+    border-radius: 0;
+    line-height: 16px; }
+  .select input:checked + label {
+    font-weight: bold; }
+
+/* DROPDOWN */
+.dropdown {
+  border-radius: 2px; }
+  .dropdown::before {
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    height: 26px;
+    line-height: 26px;
+    vertical-align: middle;
+    border-radius: 0 2px 2px 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 8px;
+    font-size: 16px;
+    content: '\25be'; }
+  .dropdown:active::before {
+    line-height: 26px; }
+  .dropdown .select {
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4); }
+    .dropdown .select input:checked + div > label {
+      border-radius: 2px; }
+    .dropdown .select input + div > label {
+      border-radius: 0;
+      line-height: 16px; }
+
+/* ACCORDION */
+.accordion input + label,
+.accordion header {
+  display: block; }
+.accordion input:checked + label,
+.accordion header:focus {
+  outline: 0 none;
+  border-radius: 2px 2px 0px 0px;
+  font-weight: bold; }
+  .accordion input:checked + label + article,
+  .accordion header:focus + article {
+    max-height: 500px;
+    -webkit-transition: max-height 0.4s ease;
+    -moz-transition: max-height 0.4s ease;
+    -ms-transition: max-height 0.4s ease;
+    -o-transition: max-height 0.4s ease;
+    transition: max-height 0.4s ease; }
+.accordion article {
+  -webkit-transition: max-height 0.4s ease;
+  -moz-transition: max-height 0.4s ease;
+  -ms-transition: max-height 0.4s ease;
+  -o-transition: max-height 0.4s ease;
+  transition: max-height 0.4s ease;
+  border-radius: 0px 0px 2px 2px; }
+  .accordion article span {
+    display: inline-block;
+    color: black; }
+
+/* TOOLTIP */
+.tooltip-container::after {
+  -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  -moz-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  -ms-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  -o-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  border-radius: 2px;
+  padding: 1px 5px;
+  color: black;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(1, #c2c2c2));
+  background-image: -webkit-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: -moz-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: -ms-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: -o-linear-gradient(top, #f3f3f3, #c2c2c2);
+  background-image: linear-gradient(top, bottom, #f3f3f3, #c2c2c2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
+.tooltip-container:hover::after {
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -ms-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s; }
+
+/* TABS */
+.tabs {
+  padding: 5px; }
+  .tabs input:checked + .tab {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset; }
+  .tabs .tab {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 5px;
+    border-radius: 2px 2px 0 0;
+    line-height: 30px;
+    vertical-align: middle; }
+  .tabs article {
+    position: relative;
+    border-radius: 2px; }
+    .tabs article::before {
+      content: '';
+      display: block;
+      height: 5px;
+      background: #295524;
+      border-radius: 2px 2px 0 0;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset; }
+    .tabs article span {
+      display: inline-block;
+      color: black; }
+  .tabs input:checked + .tab + article {
+    margin-top: 29px;
+    z-index: -1; }
