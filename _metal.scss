@@ -1,0 +1,147 @@
+$padding: 1em;
+$border-radius: 0.1em;
+$outer-shadow: 0 0.1em 0.1em rgba(black, 0.2);
+
+$metal-base: gold;
+$metal-base-transp: rgba($metal-base, 0.3);
+
+// Templates
+.clickable {
+  @include transition(transform 0.05s, box-shadow 0.05s);
+
+  &:after {
+    @extend .content-filler;
+    content: '';
+    display: block;
+    background: $metal-base;
+    opacity: 0;
+    @include transition(opacity 0.05s);
+  }
+
+  &:hover:after {
+    opacity: 0.15;
+  }
+
+  &:active {
+    @include transform(translateY(0.1em));
+    box-shadow: 0 0 0.5em rgba($metal-base, 0.5) inset;
+  }
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.content-filler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// Styling
+:focus {outline:none;}
+
+body {
+  padding: 4em;
+  background: #333333;
+}
+
+body, button, input, textarea {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: rgb(70, 70, 70);
+}
+
+.metal {
+  background: transparent;
+  @include uber-gradient(top left,
+                         darken($metal-base-transp, 4) 0%,
+                         lighten($metal-base-transp, 4) 15%,
+                         darken($metal-base-transp, 8) 20%,
+                         darken($metal-base-transp, 8) 25%,
+                         lighten($metal-base-transp, 4) 35%,
+                         darken($metal-base-transp, 8) 40%,
+                         lighten($metal-base-transp, 4) 45%,
+                         darken($metal-base-transp, 12) 60%,
+                         lighten($metal-base-transp, 8) 80%,
+                         darken($metal-base-transp, 8) 85%,
+                         darken($metal-base-transp, 4) 100%);
+  box-shadow: 0 0 0.5em $metal-base inset;
+  border: none;
+  text-shadow: 0 1px 0 rgba($metal-base, 0.7);
+  border-radius: 0.2em;
+}
+
+.button {
+  position: relative;
+  @extend .metal;
+  @extend .clickable;
+  padding: $padding/2 $padding;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -0.05em;
+    left: -0.05em;
+    right: -0.05em;
+    bottom: -0.05em;
+    z-index: -1;
+    @include simple-gradient(lighten($metal-base, 25), darken($metal-base, 20));
+    border-radius: 0.2em;
+    box-shadow: $outer-shadow;
+  }
+}
+
+.textfield, .textarea {
+  background: transparent;
+  border: 1px solid rgba($metal-base, 0.5);
+  padding: $padding/2 $padding;
+  box-shadow: 0 0em 0.5em rgba(0, 0, 0, 0.2) inset, $outer-shadow;
+  @include simple-gradient(rgba($metal-base, 0.7), rgba($metal-base, 0.9));
+}
+
+.dropdown {
+  background: transparent;
+  border: 1px solid rgba($metal-base, 0.5);
+  box-shadow: 0 0em 0.5em rgba(0, 0, 0, 0.2) inset, $outer-shadow;
+  @include simple-gradient(rgba($metal-base, 0.7), rgba($metal-base, 0.9));
+}
+
+
+.radio-button,
+.checkbox {
+  + label {
+    @extend .unselectable;
+    @extend .metal;
+    @extend .clickable;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    padding: 0.5em 1em;
+    width: auto;
+    height: auto;
+    text-indent: 0;
+
+    &:before {
+      content:'\2713';  // Check mark
+      font-size: 1.3em;
+      line-height: 0em;
+      opacity: 0.3;
+    }
+  }
+
+  &:checked + label:before {
+    box-shadow: none;
+    position: relative;
+    content:'\2713';  // Check mark
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    opacity: 1;
+  }
+}
